@@ -26,9 +26,10 @@
 #define U8_LOWNIBBLE(x)    ((x) & 0x0F)
 #define U8_HIGHNIBBLE(x)   (((x) >> 4) & 0x0F)
 
+
+// ======================= EMBEDDED FUNCTION =======================
 // Convert data type function
 uint8_t uint8_to_str(uint8_t num, uint8_t *str);
-
 #if HEX_HEXSTR_CVT_ON
 bool hex_to_hexstr(uint8_t hex, uint8_t *hexstr);
 #endif
@@ -52,4 +53,10 @@ uint8_t generate_crc8(const uint8_t* data, uint16_t data_len, uint8_t crc_init, 
     #define ESP_PRINTD(tag, str, ...) ESP_LOGD(tag, str, ##__VA_ARGS__)
 #endif
 
+// ========================== OTHER =========================
+typedef enum {
+    EMB_OK = 1,
+    I2C_CRC_FAILED,
+    UART_DATA_NOT_EXIST,
+} general_stt_t;
 #endif
